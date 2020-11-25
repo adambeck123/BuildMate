@@ -14,6 +14,8 @@ public class Project extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project);
+
+        //View Project Button navigation created
         viewProject = (Button) findViewById(R.id.viewProjectButton);
         viewProject.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -21,7 +23,7 @@ public class Project extends AppCompatActivity {
                 viewProjectScreen();
             }
         });
-
+        //New Project Button for navigation created
         newProject = (Button) findViewById(R.id.newProjectButton);
         newProject.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,10 +34,12 @@ public class Project extends AppCompatActivity {
 
 
     }
+    //method created to view the project screen
     public void viewProjectScreen(){
         Intent openViewProjectScreen = new Intent(this, ViewProject.class);
         startActivity(openViewProjectScreen);
     }
+    //method created to view the project screen
     public void newProjectScreen(){
         Intent openNewProjectScreen = new Intent(this, AddProject.class);
         startActivity(openNewProjectScreen);
