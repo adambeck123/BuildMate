@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class HomeScreen extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
     private Button projectNavigation;
     private Button styleNavigation;
     private Button materialsNavigation;

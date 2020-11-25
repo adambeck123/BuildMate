@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/newProject"
+        android:id="@+id/newProjectButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="81dp"
@@ -42,7 +42,7 @@
         app:layout_constraintTop_toBottomOf="@+id/projectIntroductionText" />
 
     <Button
-        android:id="@+id/viewProject"
+        android:id="@+id/viewProjectButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="81dp"
@@ -56,7 +56,7 @@
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newProject" />
+        app:layout_constraintTop_toBottomOf="@+id/newProjectButton" />
 
     <TextView
         android:id="@+id/projectIntroductionText"
@@ -85,7 +85,7 @@
         android:layout_marginBottom="80dp"
         android:text="in this area you can Create or View your projects"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/newProject"
+        app:layout_constraintBottom_toTopOf="@+id/newProjectButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
