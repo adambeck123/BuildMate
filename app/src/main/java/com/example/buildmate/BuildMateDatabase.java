@@ -1,4 +1,4 @@
-package com.example.buildmate.buildMateDB;
+package com.example.buildmate;
 
 import android.content.Context;
 

@@ -7,9 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.buildmate.buildMateDB.BuildMateDatabase;
-import com.example.buildmate.buildMateDB.ProjectEntity;
-
 public class AddProject extends AppCompatActivity {
 
     @Override
@@ -34,7 +31,13 @@ public class AddProject extends AppCompatActivity {
     private void addProjectToDatabase(String projectName, String streetLocation, String city, String postcode, String username) {
         BuildMateDatabase projectDatabase = BuildMateDatabase.getBuildMateInstance(this.getApplicationContext());
         ProjectEntity projectEntity = new ProjectEntity();
-        projectDatabase.projectDao().createProject();
+        projectEntity.projectName = projectName;
+        projectEntity.projectStreetLocation = streetLocation;
+        projectEntity.projectCity =city;
+        projectEntity.projectPostcode = postcode;
+        projectDatabase.projectDao().createProject(projectEntity);
+
+        finish();
 
     }
 
