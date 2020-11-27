@@ -39,7 +39,6 @@ public class Project extends AppCompatActivity {
     private void projectView(){
         RecyclerView projectRecyclerView= findViewById(R.id.projectRecyclerView);
         projectRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         DividerItemDecoration splitProjects = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         projectRecyclerView.addItemDecoration(splitProjects);
         projectAdapter = new ProjectAdapter(this);

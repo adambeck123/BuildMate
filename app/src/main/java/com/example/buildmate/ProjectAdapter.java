@@ -33,7 +33,6 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ProjectV
        return new ProjectViewHolder(projectView);
     }
 
-    //Communicates with the projectEntityList assigns the values
     @Override
     public void onBindViewHolder(@NonNull ProjectAdapter.ProjectViewHolder holder, int position) {
         holder.projectNameRow.setText(this.projectEntityList.get(position).projectName);
@@ -43,13 +42,11 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ProjectV
 
     }
 
-    //Returns the size of the EntityList
     @Override
     public int getItemCount() {
         return projectEntityList.size();
     }
 
-    //Creation of the view holder, this will hold the fields within the project_row.xml
     public class ProjectViewHolder extends RecyclerView.ViewHolder{
         TextView projectNameRow;
         TextView streetLocationRow;
