@@ -15,14 +15,14 @@ import java.util.List;
 
 public class Project extends AppCompatActivity {
     private Button newProject;
-    private ProjectAdapter projectAdapter;
+    private ViewProjectAdapter projectAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project);
 
-        //New Project Button for navigation created
+        //Initialize Project Button for navigation created
         newProject = (Button) findViewById(R.id.newProjectButton);
         newProject.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,19 +35,26 @@ public class Project extends AppCompatActivity {
         viewProject();
 
     }
-
+    private RecyclerView projectRecyclerView;
     private void projectView(){
-        RecyclerView projectRecyclerView= findViewById(R.id.projectRecyclerView);
+
+        // Initializing the RecyclerView
+        projectRecyclerView= findViewById(R.id.projectRecyclerView);
         projectRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        //Adding line between results
         DividerItemDecoration splitProjects = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         projectRecyclerView.addItemDecoration(splitProjects);
-        projectAdapter = new ProjectAdapter(this);
+        //Assigning the recycler view with the project adapter, this contains the project_row.xml file
+        projectAdapter = new ViewProjectAdapter(this);
         projectRecyclerView.setAdapter(projectAdapter);
 
     }
     private BuildMateDatabase projectDatabase;
     private void viewProject(){
-        BuildMateDatabase projectDatabase = BuildMateDatabase.getBuildMateInstance(this.getApplicationContext());
+        //retrieving the context set in the BuildMateDatabase
+        projectDatabase = BuildMateDatabase.getBuildMateInstance(this.getApplicationContext());
+        //
         List<ProjectEntity> projects = projectDatabase.projectDao().getAllProjects();
         projectAdapter.setProjectEntityList(projects);
 
