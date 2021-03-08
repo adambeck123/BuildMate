@@ -12,6 +12,7 @@
         <activity android:name=".ViewProject"></activity>
         <activity android:name=".AddProject" />
         <activity android:name=".AddHouseStyle" />
+        <activity android:name=".AddMaterials" />
         <activity android:name=".Materials" />
         <activity android:name=".Style" />
         <activity android:name=".Project" />
