@@ -39,7 +39,7 @@
         app:layout_constraintTop_toBottomOf="@+id/materialsHeader" />
 
     <TextView
-        android:id="@+id/materialsIntroductionText"
+        android:id="@+id/materialsIntroductionText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="62dp"
@@ -69,20 +69,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialsIntroductionText" />
 
-    <Button
-        android:id="@+id/viewMaterials"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="81dp"
-        android:layout_marginLeft="81dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="81dp"
-        android:layout_marginRight="81dp"
-        android:background="#3F51B5"
-        android:text="View Materials"
-        android:textColor="@android:color/white"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/projectRecyclerView"
+        android:layout_width="232dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="460dp"
+        android:layout_marginEnd="16dp"
+        android:scrollbars="vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.453"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addMaterials" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
