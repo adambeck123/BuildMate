@@ -14,7 +14,7 @@ public interface ProjectDao {
     void createProject(ProjectEntity projectEntity);
 
     //Query to be used in view_project with the recycler viewer does not contain username
-    @Query("Select projectID, project_name, project_street_location, project_city, project_postcode, username From ProjectEntity")
+    @Query("Select projectID, project_name, project_street_location, project_city, project_postcode From ProjectEntity")
     List<ProjectEntity> getAllProjects();
 
 

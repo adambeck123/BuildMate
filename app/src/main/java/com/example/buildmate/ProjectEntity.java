@@ -22,9 +22,5 @@ public class ProjectEntity {
     @ColumnInfo(name = "project_postcode")
     public String projectPostcode;
 
-    //Username column added to ensure that it is compatible for handling multiple user input
-    @ColumnInfo(name="username")
-    public String username;
-
 
 }

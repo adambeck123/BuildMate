@@ -10,21 +10,17 @@ public class MaterialsEntity {
 
     //projectID will be used to uniquely define each project customer creates
     @PrimaryKey(autoGenerate = true)
-    public int projectID;
+    public int materialsID;
 
     //Columns created for each editable text field available on activity_add_project
+    @ColumnInfo(name = "material_name")
+    public String materialstName;
+    @ColumnInfo(name = "quantity")
+    public String quantiy;
     @ColumnInfo(name = "project_name")
     public String projectName;
-    @ColumnInfo(name = "project_street_location")
-    public String projectStreetLocation;
-    @ColumnInfo(name = "project_city")
-    public String projectCity;
-    @ColumnInfo(name = "project_postcode")
-    public String projectPostcode;
-
-    //Username column added to ensure that it is compatible for handling multiple user input
-    @ColumnInfo(name="username")
-    public String username;
+    @ColumnInfo(name = "house_style")
+    public String houseStyle;
 
 
 }

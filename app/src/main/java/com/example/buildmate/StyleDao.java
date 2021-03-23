@@ -14,7 +14,7 @@ public interface StyleDao {
     void createProject(StyleEntity styleEntity);
 
     //Query to be used in view_project with the recycler viewer does not contain username
-    @Query("Select projectID, project_name, project_street_location, project_city, project_postcode, username From StyleEntity")
+    @Query("Select styleID, house_style, number_of_houses, project_name, project_location From StyleEntity")
     List<StyleEntity> getAllProjects();
 
 
