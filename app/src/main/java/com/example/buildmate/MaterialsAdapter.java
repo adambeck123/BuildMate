@@ -1,3 +1,5 @@
+package com.example.buildmate;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,10 +8,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.buildmate.MaterialsEntity;
-import com.example.buildmate.ProjectEntity;
-import com.example.buildmate.R;
 
 import java.util.List;
 
