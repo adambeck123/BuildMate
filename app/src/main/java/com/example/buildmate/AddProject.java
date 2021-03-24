@@ -37,6 +37,7 @@ public class AddProject extends AppCompatActivity {
         projectEntity.projectPostcode = postcode;
         projectDatabase.projectDao().createProject(projectEntity);
 
+
         finish();
 
     }
