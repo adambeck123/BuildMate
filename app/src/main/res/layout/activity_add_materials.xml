@@ -72,7 +72,7 @@
         tools:ignore="MissingConstraints" />
 
     <Spinner
-        android:id="@+id/projectNameSpinner2"
+        android:id="@+id/materialsNameSpinner"
         android:layout_width="252dp"
         android:layout_height="41dp"
         android:layout_marginStart="16dp"

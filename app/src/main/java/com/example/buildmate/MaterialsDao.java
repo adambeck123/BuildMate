@@ -17,6 +17,11 @@ public interface MaterialsDao {
     @Query("Select materialsID, material_name, project_name, house_style From MaterialsEntity")
     List<MaterialsEntity> getAllMaterials();
 
+    @Query("Select project_name from ProjectEntity")
+    List<String> retrieveProjectName();
+
+    @Query("Select house_style from StyleEntity")
+    List<String> getHouseStyle();
 
 }
 

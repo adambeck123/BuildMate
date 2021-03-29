@@ -13,6 +13,8 @@ public abstract class BuildMateDatabase extends RoomDatabase {
 
 
     public abstract ProjectDao projectDao ();
+    public abstract StyleDao styleDao();
+    public abstract MaterialsDao materialsDao ();
     //Creating instance of the BuildMateDatabase
     private static BuildMateDatabase BuildMateInstance;
     public static BuildMateDatabase getBuildMateInstance(Context context){

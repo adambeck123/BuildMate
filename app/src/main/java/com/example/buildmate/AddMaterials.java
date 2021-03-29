@@ -1,30 +1,59 @@
 package com.example.buildmate;
 
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class AddMaterials extends AppCompatActivity {
+import java.util.List;
 
+public class AddMaterials extends AppCompatActivity {
+    //BuildMateDatabase styleDatabase = BuildMateDatabase.getBuildMateInstance(this.getApplicationContext());
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_materials);
-/*
-        final EditText newProjectName = findViewById(R.id.newProjectName);
-        final EditText newStreetLocation = findViewById(R.id.newStreetLocation);
-        final EditText newCity = findViewById(R.id.newCity);
-        final EditText newPostcode = findViewById(R.id.newPostcode);
-        final String username = "User1";
-        Button projectSubmitButton = findViewById(R.id.projectSubmitButton);
-        projectSubmitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addProjectToDatabase(newProjectName.getText().toString(), newStreetLocation.getText().toString(),newCity.getText().toString(),newPostcode.getText().toString(),username );
-            }
-        });*/
+        projectNameDropdown();
+
     }
-/*
+
+
+    //creating the dropdown for project name
+    private void projectNameDropdown(){
+        BuildMateDatabase styleDatabase = BuildMateDatabase.getBuildMateInstance(this.getApplicationContext());
+        List<String> projectNameList = styleDatabase.materialsDao().retrieveProjectName();
+        // Create the spinner
+        Spinner projectNameSpinner = (Spinner) findViewById(R.id.materialsNameSpinner);
+        //Convert list into array
+        String [] projectNameArray= projectNameList.toArray(new String [projectNameList.size()]);
+        //Array adapter created to store details of the array
+        ArrayAdapter<String> projectNameAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, projectNameArray);
+        //Layout of the dropdown implemented
+        projectNameAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //adapter assigned to the spinner
+        projectNameSpinner.setAdapter(projectNameAdapter);
+
+    }
+    private void houseStyleDropdown(){
+        BuildMateDatabase styleDatabase = BuildMateDatabase.getBuildMateInstance(this.getApplicationContext());
+        List<String> houseStyleList = styleDatabase.materialsDao().getHouseStyle();
+        // Create the spinner
+        Spinner houseStyleSpinner = (Spinner) findViewById(R.id.houseStyleSpinner);
+        //Convert list into array
+        String [] houseStyleArray= houseStyleList.toArray(new String [houseStyleList.size()]);
+        //Array adapter created to store details of the array
+        ArrayAdapter<String> houseStyleAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, houseStyleArray);
+        //Layout of the dropdown implemented
+        houseStyleAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //adapter assigned to the spinner
+        houseStyleSpinner.setAdapter(houseStyleAdapter);
+
+    }
+
+    }
+
+    /*
     private void addProjectToDatabase(String projectName, String streetLocation, String city, String postcode, String username) {
         BuildMateDatabase projectDatabase = BuildMateDatabase.getBuildMateInstance(this.getApplicationContext());
         ProjectEntity projectEntity = new ProjectEntity();
@@ -38,4 +67,3 @@ public class AddMaterials extends AppCompatActivity {
 
     }
 */
-}
