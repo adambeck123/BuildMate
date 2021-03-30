@@ -1,6 +1,8 @@
 package com.example.buildmate;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -18,13 +20,25 @@ public class AddMaterials extends AppCompatActivity {
 
     }
 
-
+    String materialsProjectName = null;
     //creating the dropdown for project name
     private void projectNameDropdown(){
         BuildMateDatabase styleDatabase = BuildMateDatabase.getBuildMateInstance(this.getApplicationContext());
         List<String> projectNameList = styleDatabase.materialsDao().retrieveProjectName();
         // Create the spinner
         Spinner projectNameSpinner = (Spinner) findViewById(R.id.materialsNameSpinner);
+        projectNameSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                materialsProjectName = parent.getItemAtPosition(position).toString();
+                System.out.println(materialsProjectName);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         //Convert list into array
         String [] projectNameArray= projectNameList.toArray(new String [projectNameList.size()]);
         //Array adapter created to store details of the array
@@ -33,13 +47,26 @@ public class AddMaterials extends AppCompatActivity {
         projectNameAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //adapter assigned to the spinner
         projectNameSpinner.setAdapter(projectNameAdapter);
-
     }
+
+    String houseStyleDropdown = null;
     private void houseStyleDropdown(){
         BuildMateDatabase styleDatabase = BuildMateDatabase.getBuildMateInstance(this.getApplicationContext());
         List<String> houseStyleList = styleDatabase.materialsDao().getHouseStyle();
         // Create the spinner
         Spinner houseStyleSpinner = (Spinner) findViewById(R.id.houseStyleSpinner);
+
+       houseStyleSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+           @Override
+           public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+               houseStyleDropdown = parent.getItemAtPosition(position).toString();
+           }
+
+           @Override
+           public void onNothingSelected(AdapterView<?> parent) {
+
+           }
+       });
         //Convert list into array
         String [] houseStyleArray= houseStyleList.toArray(new String [houseStyleList.size()]);
         //Array adapter created to store details of the array
