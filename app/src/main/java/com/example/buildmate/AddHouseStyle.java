@@ -20,20 +20,31 @@ public class AddHouseStyle extends AppCompatActivity {
         setContentView(R.layout.activity_add_housestyle);
         projectNameDropdown();
         projectLocationDropdown();
-/*
-        final EditText newProjectName = findViewById(R.id.newProjectName);
-        final EditText newStreetLocation = findViewById(R.id.newStreetLocation);
-        final EditText newCity = findViewById(R.id.newCity);
-        final EditText newPostcode = findViewById(R.id.newPostcode);
-        final String username = "User1";
-        Button projectSubmitButton = findViewById(R.id.projectSubmitButton);
-        projectSubmitButton.setOnClickListener(new View.OnClickListener() {
+
+        final EditText newHouseStyleName = findViewById(R.id.newHouseStyleName);
+        final EditText numberOfHouses = findViewById(R.id.numberOfHouses);
+        Button houseStyleSubmitButton = findViewById(R.id.houseStyleSubmitButton);
+        houseStyleSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addProjectToDatabase(newProjectName.getText().toString(), newStreetLocation.getText().toString(),newCity.getText().toString(),newPostcode.getText().toString(),username );
+                addProjectToDatabase(newHouseStyleName.getText().toString(), numberOfHouses.getText().toString(),projectName,projectLocation);
             }
-        });*/
+        });
     }
+
+    private void addProjectToDatabase(String houseStyleName, String numberOfHouses, String projectName, String projectLocation) {
+        BuildMateDatabase projectDatabase = BuildMateDatabase.getBuildMateInstance(this.getApplicationContext());
+        StyleEntity styleEntity = new StyleEntity();
+        styleEntity.houseStyleName = houseStyleName;
+        styleEntity.numberOfHouseStyle = numberOfHouses;
+        styleEntity.styleProjectName = projectName;
+        styleEntity.styleProjectLocation = projectLocation;
+        projectDatabase.styleDao().createProject(styleEntity);
+        finish();
+
+
+    }
+
     String projectName = null;
     //creating the dropdown for project name
     private void projectNameDropdown(){
@@ -95,18 +106,5 @@ public class AddHouseStyle extends AppCompatActivity {
         //adapter assigned to the spinner
         projectLocationSpinner.setAdapter(projectLocationAdapter);
     }
-/*
-    private void addProjectToDatabase(String projectName, String streetLocation, String city, String postcode, String username) {
-        BuildMateDatabase projectDatabase = BuildMateDatabase.getBuildMateInstance(this.getApplicationContext());
-        ProjectEntity projectEntity = new ProjectEntity();
-        projectEntity.projectName  projectName;
-        projectEntity.projectStreetLocation = streetLocation;
-        projectEntity.projectCity =city;
-        projectEntity.projectPostcode = postcode;
-        projectDatabase.projectDao().createProject(projectEntity);
 
-        finish();
-
-    }
-*/
 }
