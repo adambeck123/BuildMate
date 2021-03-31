@@ -19,7 +19,7 @@ public class AddHouseStyle extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_housestyle);
         projectNameDropdown();
-        projectLocationDropdown();
+        //projectLocationDropdown();
 
         final EditText newHouseStyleName = findViewById(R.id.newHouseStyleName);
         final EditText numberOfHouses = findViewById(R.id.numberOfHouses);
@@ -27,19 +27,19 @@ public class AddHouseStyle extends AppCompatActivity {
         houseStyleSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addProjectToDatabase(newHouseStyleName.getText().toString(), numberOfHouses.getText().toString(),projectName,projectLocation);
+                addHouseStyleToDatabase(newHouseStyleName.getText().toString(), numberOfHouses.getText().toString(),projectName,projectLocation);
             }
         });
     }
 
-    private void addProjectToDatabase(String houseStyleName, String numberOfHouses, String projectName, String projectLocation) {
-        BuildMateDatabase projectDatabase = BuildMateDatabase.getBuildMateInstance(this.getApplicationContext());
+    private void addHouseStyleToDatabase(String houseStyleName, String numberOfHouses, String projectName, String projectLocation) {
+        BuildMateDatabase styleDatabase = BuildMateDatabase.getBuildMateInstance(this.getApplicationContext());
         StyleEntity styleEntity = new StyleEntity();
         styleEntity.houseStyleName = houseStyleName;
         styleEntity.numberOfHouseStyle = numberOfHouses;
         styleEntity.styleProjectName = projectName;
         styleEntity.styleProjectLocation = projectLocation;
-        projectDatabase.styleDao().createProject(styleEntity);
+        styleDatabase.styleDao().createProject(styleEntity);
         finish();
 
 
@@ -57,6 +57,7 @@ public class AddHouseStyle extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 projectName = parent.getItemAtPosition(position).toString();
+                projectLocationDropdown(projectName);
                 System.out.println(projectName);
             }
 
@@ -78,9 +79,11 @@ public class AddHouseStyle extends AppCompatActivity {
 
 
     String projectLocation = null;
-    private void projectLocationDropdown(){
+    private void projectLocationDropdown(String ProjectName){
         BuildMateDatabase styleDatabase = BuildMateDatabase.getBuildMateInstance(this.getApplicationContext());
-        List<String> projectLocationList = styleDatabase.styleDao().getProjectLocation();
+        String projectName = ProjectName;
+        List<String> projectLocationList = styleDatabase.styleDao().getProjectLocation(projectName);
+
         // Create the spinner
         Spinner projectLocationSpinner = (Spinner) findViewById(R.id.projectLocationSpinner);
 

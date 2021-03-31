@@ -21,6 +21,6 @@ public interface StyleDao {
     List<String> getProjectName();
     //Query created to retrieve Project Location
 
-    @Query("Select project_street_location from ProjectEntity")
-    List<String> getProjectLocation();
+    @Query("Select project_street_location from ProjectEntity where project_name = :projectName")
+    List<String> getProjectLocation(String projectName);
 }
