@@ -21,6 +21,8 @@ public class MaterialsEntity {
     public String projectName;
     @ColumnInfo(name = "house_style")
     public String houseStyle;
+    @ColumnInfo(name = "price")
+    public String price;
 
 
 }

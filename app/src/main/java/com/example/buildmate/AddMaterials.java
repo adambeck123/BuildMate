@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,9 +19,33 @@ public class AddMaterials extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_materials);
         projectNameDropdown();
-        houseStyleDropdown();
+
+        final EditText nameOfMaterials = findViewById(R.id.nameOfMaterials);
+        final EditText quantity = findViewById(R.id.materialQuantity);
+        final EditText price = findViewById(R.id.price);
+        Button materialsSubmitButton = findViewById(R.id.materialsSubmitButton);
+        materialsSubmitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addMaterialsToDatabase(nameOfMaterials.getText().toString(), quantity.getText().toString(),price.getText().toString(),materialsProjectName,houseStyleDropdown);
+            }
+        });
+    }
+
+    private void addMaterialsToDatabase(String nameOfMaterials, String quantity, String price, String projectName, String houseStyle) {
+        BuildMateDatabase materialsDatabase = BuildMateDatabase.getBuildMateInstance(this.getApplicationContext());
+        MaterialsEntity materialsEntity = new MaterialsEntity();
+        materialsEntity.materialstName = nameOfMaterials;
+        materialsEntity.quantiy = quantity;
+        materialsEntity.price = price;
+        materialsEntity.projectName = projectName;
+        materialsEntity.houseStyle = houseStyle;
+        materialsDatabase.materialsDao().createProject(materialsEntity);
+        finish();
+        System.out.println("success");
 
     }
+
 
     String materialsProjectName = null;
     //creating the dropdown for project name
@@ -32,6 +58,7 @@ public class AddMaterials extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 materialsProjectName = parent.getItemAtPosition(position).toString();
+                houseStyleDropdown(materialsProjectName);
                 System.out.println(materialsProjectName);
             }
 
@@ -51,9 +78,10 @@ public class AddMaterials extends AppCompatActivity {
     }
 
     String houseStyleDropdown = null;
-    private void houseStyleDropdown(){
+    private void houseStyleDropdown(String ProjectName){
         BuildMateDatabase styleDatabase = BuildMateDatabase.getBuildMateInstance(this.getApplicationContext());
-        List<String> houseStyleList = styleDatabase.materialsDao().getHouseStyle();
+        String projectName = ProjectName;
+        List<String> houseStyleList = styleDatabase.materialsDao().getHouseStyle(projectName);
         // Create the spinner
         Spinner houseStyleSpinner = (Spinner) findViewById(R.id.houseStyleSpinner);
 
@@ -79,19 +107,4 @@ public class AddMaterials extends AppCompatActivity {
 
     }
 
-    }
-
-    /*
-    private void addProjectToDatabase(String projectName, String streetLocation, String city, String postcode, String username) {
-        BuildMateDatabase projectDatabase = BuildMateDatabase.getBuildMateInstance(this.getApplicationContext());
-        ProjectEntity projectEntity = new ProjectEntity();
-        projectEntity.projectName = projectName;
-        projectEntity.projectStreetLocation = streetLocation;
-        projectEntity.projectCity =city;
-        projectEntity.projectPostcode = postcode;
-        projectDatabase.projectDao().createProject(projectEntity);
-
-        finish();
-
-    }
-*/
+}

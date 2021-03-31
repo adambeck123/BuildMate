@@ -19,7 +19,6 @@ public class AddHouseStyle extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_housestyle);
         projectNameDropdown();
-        //projectLocationDropdown();
 
         final EditText newHouseStyleName = findViewById(R.id.newHouseStyleName);
         final EditText numberOfHouses = findViewById(R.id.numberOfHouses);
