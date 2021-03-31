@@ -14,7 +14,7 @@ public interface MaterialsDao {
     void createProject(MaterialsEntity materialsEntity);
 
     //Query to be used in view_project with the recycler viewer does not contain username
-    @Query("Select materialsID, material_name, project_name, house_style, price From MaterialsEntity")
+    @Query("Select materialsID, quantity, material_name, project_name, house_style, price From MaterialsEntity")
     List<MaterialsEntity> getAllMaterials();
 
     @Query("Select project_name from ProjectEntity")

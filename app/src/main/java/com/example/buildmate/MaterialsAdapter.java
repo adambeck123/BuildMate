@@ -38,8 +38,10 @@ public class MaterialsAdapter extends RecyclerView.Adapter<MaterialsAdapter.Mate
     public void onBindViewHolder(@NonNull MaterialsAdapter.MaterialsViewHolder holder, int position) {
         holder.materialNameAdapter.setText(this.materialsEntityList.get(position).materialstName);
         holder.quantityAdapter.setText(this.materialsEntityList.get(position).quantiy);
+        holder.priceAdapter.setText(this.materialsEntityList.get(position).price);
         holder.projectNameAdapter.setText(this.materialsEntityList.get(position).projectName);
         holder.houseStyleAdapter.setText(this.materialsEntityList.get(position).houseStyle);
+
 
     }
 
@@ -55,14 +57,15 @@ public class MaterialsAdapter extends RecyclerView.Adapter<MaterialsAdapter.Mate
         TextView quantityAdapter;
         TextView projectNameAdapter;
         TextView houseStyleAdapter;
+        TextView priceAdapter;
 
         public MaterialsViewHolder(View materialView){
             super(materialView);
             materialNameAdapter = materialView.findViewById(R.id.materialName);
-            quantityAdapter = materialView.findViewById(R.id.quantity);
+            quantityAdapter = materialView.findViewById(R.id.quantityView);
             projectNameAdapter = materialView.findViewById(R.id.materialsProjectName);
             houseStyleAdapter= materialView.findViewById(R.id.houseStyle);
-
+            priceAdapter = materialView.findViewById(R.id.price);
         }
     }
 

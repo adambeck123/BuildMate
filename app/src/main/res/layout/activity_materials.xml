@@ -70,7 +70,7 @@
         app:layout_constraintTop_toBottomOf="@+id/materialsIntroductionText" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/projectRecyclerView"
+        android:id="@+id/materialsRecyclerView"
         android:layout_width="232dp"
         android:layout_height="match_parent"
         android:layout_marginStart="16dp"
