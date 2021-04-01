@@ -23,7 +23,7 @@ public class Login extends AppCompatActivity {
     private Auth0 auth0;
 
     public static final String EXTRA_CLEAR_CREDENTIALS = "Psp6agipiDVpP2qhm3yzcfgUoFFS5uRR";
-    public static final String EXTRA_ACCESS_TOKEN = "n1_z0NqdRQRVJzHMiVW7oJBN-HyQr3Av2a6BFLPcqPpaHH9NlEldFM2K324XKOwX";
+    public static final String EXTRA_ACCESS_TOKEN = "https://dev-omlr1l8b.eu.auth0.com/oauth/token";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
