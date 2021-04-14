@@ -51,12 +51,14 @@ public class AddHouseStyle extends AppCompatActivity {
         List<String> projectNameList = styleDatabase.styleDao().getProjectName();
         // Create the spinner
         Spinner projectNameSpinner = (Spinner) findViewById(R.id.projectNameSpinner);
-
+        //setting a listener
         projectNameSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 projectName = parent.getItemAtPosition(position).toString();
+                //passing the project name as parameter then calling the method to update project location dropdown options
                 projectLocationDropdown(projectName);
+                //Testing
                 System.out.println(projectName);
             }
 

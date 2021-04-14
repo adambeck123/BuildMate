@@ -27,9 +27,9 @@
         android:id="@+id/StyleIntroductionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="200dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginEnd="32dp"
         android:text="Hi, Welcome to the house style area of BuildMate."
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,14 +39,13 @@
     <TextView
         android:id="@+id/StyleIntroductionText2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="23dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="225dp"
         android:layout_marginEnd="32dp"
         android:text="In this area you can Create or View your house styles"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.681"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
